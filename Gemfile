@@ -53,6 +53,9 @@ group :development do
   # Provides a better error page for Rails and other Rack apps. Includes source code inspection, a live REPL and local/instance variable inspection for all stack frames.
   gem "better_errors"
   gem "binding_of_caller"
+  # Guard & LiveReload automatically reloads your browser when 'view' files are modified
+  gem 'guard', '~> 2.16', '>= 2.16.2'
+  gem 'guard-livereload', '~> 2.5', '>= 2.5.2'
 end
 
 group :test do
