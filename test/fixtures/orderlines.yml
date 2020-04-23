@@ -1,0 +1,11 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  quantity: 1
+  orderdate: 2020-04-22 20:26:31
+  products: one
+
+two:
+  quantity: 1
+  orderdate: 2020-04-22 20:26:31
+  products: two
