@@ -89,6 +89,8 @@ GEM
       http_parser.rb (~> 0.6.0)
     erubi (1.9.0)
     eventmachine (1.2.7)
+    faker (2.11.0)
+      i18n (>= 1.6, < 2)
     ffi (1.12.2)
     font-awesome-rails (4.7.0.5)
       railties (>= 3.2, < 6.1)
@@ -253,6 +255,7 @@ DEPENDENCIES
   bootstrap-will_paginate (~> 1.0)
   byebug
   capybara (>= 2.15)
+  faker (~> 2.11)
   font-awesome-rails (~> 4.7, >= 4.7.0.5)
   guard (~> 2.16, >= 2.16.2)
   guard-livereload (~> 2.5, >= 2.5.2)
