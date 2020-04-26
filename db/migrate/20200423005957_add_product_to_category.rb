@@ -1,5 +1,5 @@
 class AddProductToCategory < ActiveRecord::Migration[6.0]
   def change
-  	add_column :products, :category_id, :int
+  	add_reference :products, :category, foreign_key: true, null: false
   end
 end
