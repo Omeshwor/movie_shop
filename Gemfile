@@ -29,8 +29,6 @@ gem 'font-awesome-rails', '~> 4.7', '>= 4.7.0.5'
 
 # will_paginate provides a simple API for performing paginated queries.
 gem 'will_paginate', '~> 3.3'
-#Hooks into will_paginate to format the html to match Twitter Bootstrap styling.
-gem 'bootstrap-will_paginate', '~> 1.0'
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'

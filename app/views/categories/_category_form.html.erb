@@ -1,0 +1,7 @@
+<div class="form-group">
+	<%= simple_form_for @category do |f| %>
+		<%= f.error_notification %>
+		<%= f.input :category_name %>
+		<%= f.button :submit, class: "btn-primary" %>
+	<% end %>
+</div>

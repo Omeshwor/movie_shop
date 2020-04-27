@@ -16,6 +16,7 @@
  *= require_self
  */
 
+@import "bootstrap";
 
 .container {
 	margin-top: 10px;

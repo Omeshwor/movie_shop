@@ -1,0 +1,14 @@
+<div class="container">
+	<div class="card">
+	  <div class="card-body">
+	    <h5 class="card-title row">
+	    	<div class="col-2">Category Name:</div>
+	    	<div class="col-8"><%= @category.category_name %></div>
+	    </h5>
+	    <hr>
+	    <%= link_to "Edit this category", edit_category_path(@category), class: "btn btn-info" %>
+	    <%= link_to "Delete this product", category_path(@category), class: "btn btn-danger",
+	    			method: :delete, data: { confirm: "Are you sure ?"} %>
+	  </div>
+	</div>
+</div>
