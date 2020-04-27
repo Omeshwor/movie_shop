@@ -11,4 +11,26 @@
 	    			method: :delete, data: { confirm: "Are you sure ?"} %>
 	  </div>
 	</div>
+	<table class="table table-bordered">
+		<thead>
+			<tr>
+  			<th scope="col">CPI</th>
+  			<th scope="col">Movie title</th>
+  			<th scope="col">Actor</th>
+  			<th scope="col">Special</th>
+			</tr>
+		</thead>
+		<% @category.products.each do |product| %>
+		<tbody>
+ 			<tr>
+	      <td><%= product.common_product_id %></td>
+	      <td><%= link_to product.title, product %></td>
+	      <td><%= product.actor %></td>
+	      <td><%= product.special %></td>
+	    </tr>
+		</tbody>
+		<% end %>
+	</table>
+	
 </div>
+
