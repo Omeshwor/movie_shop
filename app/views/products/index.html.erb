@@ -17,12 +17,17 @@
 		        <h5 class="card-title"><%= link_to product.title, product %></h5>
 		        <p class="card-text"><%= truncate(product.description, :length => 50) %>
 		        	<span class="small"><%= link_to "read more", product %></span>
-		        	
 		        </p>
+		        
 		        <p class="card-text">
-		        	<span><em><%= link_to product.category.category_name, product.category %></em></span>
+		        	<span><em>
+		        		<% if product.category.blank? %>
+		        			No category mentioned
+		        		<% else %>
+		        			<%= link_to product.category.category_name, product.category %>
+		        		<% end %>
+		        			</em></span>
 		        </p>
-
 		        <p class="btn btn-primary">Regular Price: $&nbsp<%= product.price %></p>
 		        <% if product.special %>
 		            <p class="btn btn-success">Special Price: $&nbsp<%= product.special %></p>
