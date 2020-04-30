@@ -10,20 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_23_015607) do
+ActiveRecord::Schema.define(version: 2020_04_30_015013) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "categories", force: :cascade do |t|
     t.string "category_name"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "customer_history", force: :cascade do |t|
-    t.integer "order_id"
-    t.integer "product_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -42,7 +35,7 @@ ActiveRecord::Schema.define(version: 2020_04_23_015607) do
     t.string "credit_card_type"
     t.integer "credit_card"
     t.datetime "credit_card_expiration"
-    t.string "password"
+    t.string "password_digest"
     t.integer "age"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -73,10 +66,10 @@ ActiveRecord::Schema.define(version: 2020_04_23_015607) do
     t.decimal "net_amount"
     t.decimal "tax"
     t.decimal "total_amount"
-    t.bigint "customer_id", null: false
+    t.bigint "customers_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["customer_id"], name: "index_orders_on_customer_id"
+    t.index ["customers_id"], name: "index_orders_on_customers_id"
   end
 
   create_table "products", force: :cascade do |t|
@@ -88,24 +81,13 @@ ActiveRecord::Schema.define(version: 2020_04_23_015607) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "common_product_id"
-    t.integer "category_id"
-  end
-
-  create_table "reorder", force: :cascade do |t|
-    t.bigint "product_id", null: false
-    t.datetime "date_low"
-    t.integer "quantity_low"
-    t.datetime "date_reordered"
-    t.integer "quantity_ordered"
-    t.datetime "date_expected"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["product_id"], name: "index_reorder_on_product_id"
+    t.bigint "category_id", null: false
+    t.index ["category_id"], name: "index_products_on_category_id"
   end
 
   add_foreign_key "inventories", "products"
   add_foreign_key "orderlines", "orders"
   add_foreign_key "orderlines", "products", column: "products_id"
-  add_foreign_key "orders", "customers"
-  add_foreign_key "reorder", "products"
+  add_foreign_key "orders", "customers", column: "customers_id"
+  add_foreign_key "products", "categories"
 end

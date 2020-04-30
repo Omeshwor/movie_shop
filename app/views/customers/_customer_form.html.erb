@@ -1,0 +1,22 @@
+<div class="form-group">
+	<%= simple_form_for @customer do |f| %>
+		<%= f.error_notification %>
+		<%= f.input :first_name %>
+		<%= f.input :last_name %>
+		<%= f.input :email %>
+		<%= f.input :password %>
+		<%= f.input :password_confirmation %>
+		<%= f.input :address1 %>
+		<%= f.input :address2 %>
+		<%= f.input :city %>
+		<%= f.input :state %>
+		<%= f.input :zip %>
+		<%= f.input :country %>
+		<%= f.input :phone %>
+		<%= f.input :credit_card_type %>
+		<%= f.input :credit_card %>
+		<%= f.input :credit_card_expiration %>
+		<%= f.input :age, collection: 18..60 %>
+		<%= f.button :submit, class: "btn-primary" %>
+	<% end %>
+</div>

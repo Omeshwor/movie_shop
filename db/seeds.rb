@@ -1,7 +1,7 @@
 def seed_categories
-	12.times do 
-	Category.create(
-		category_name: Faker::Book.genre
+	10.times do 
+	Category.create!(
+		category_name: 					Faker::Book.genre
 	)
 	end
 end
@@ -11,19 +11,39 @@ def seed_products
 
 	categories.each do |category|
 		5.times do
-			Product.create(
-				title: Faker::Book.title,
-				description: Faker::Lorem.sentences[0],
-				actor: Faker::Artist.name,
-				price: Faker::Commerce.price(range: 1.00..20.00),
-				special: Faker::Commerce.price(range: 0..5.0),
-				category_id: category.id,
-				common_product_id: Faker::Code.isbn
+			Product.create!(
+				title: 							Faker::Book.title,
+				description: 				Faker::Lorem.sentences[0],
+				actor: 							Faker::Artist.name,
+				price: 							Faker::Commerce.price(range: 1.00..20.00),
+				special: 						Faker::Commerce.price(range: 0..5.0),
+				category_id: 				category.id,
+				common_product_id: 	Faker::Code.isbn
 				)
 		end
 	end
 end
 
+def seed_customers
+	15.times do
+		Customer.create!(
+			first_name: 					Faker::Name.first_name,
+			last_name: 						Faker::Name.last_name,
+			address1: 						Faker::Address.street_address,
+			address2: 						Faker::Address.secondary_address,
+			city: 								Faker::Address.city,
+			zip: 									Faker::Address.zip_code,
+			state: 								Faker::Address.state_abbr,
+			country: 							Faker::Address.country,
+			email: 								"#{first_name}#{last_name}@example.com",
+			password: 						"password",
+			password_confirmation: "password",
+			phone: 								Faker::PhoneNumber.cell_phone_in_e164,
+			age: 									Faker::Number.between(from: 1, to: 65)
+			)
+	end
+end
 
 seed_categories
 seed_products
+seed_customers

@@ -1,0 +1,15 @@
+<div class="container">
+	<h1 align="center" class="header">Listing all Customers</h1>
+	<div class="row row-cols-1 row-cols-md-3">
+		<% @customers.each do |customer| %>
+		  <div class="col mb-4 border-info">
+		    <div class="card border-info">
+		      <!-- <img src="..." class="card-img-top" alt="..."> -->
+		      <div class="card-body">
+		        <h5 class="card-title"><%= link_to customer.email, customer %></h5>
+		      </div>
+		    </div>
+		  </div>
+		<% end %>
+	</div>
+</div>
