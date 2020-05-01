@@ -1,0 +1,9 @@
+<div class="container">
+	<h1 align="center">Login</h1>
+	<%= simple_form_for(:session, :html => {class: "form-horizontal", role: "form"}, url: login_path) do |f| %>
+		<%= f.error_notification %>
+		<%= f.input :email, class:"form-control", placeholder:"Enter your email address", autofocus: true %>
+		<%= f.input :password, class:"form-control", autocomplete: "off" %>
+		<%= f.submit "Log in", class: "btn btn-primary" %>
+	<% end %>
+</div>

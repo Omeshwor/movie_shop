@@ -1,7 +1,7 @@
 def seed_categories
 	10.times do 
 	Category.create!(
-		category_name: 					Faker::Book.genre
+		category_name: 					Faker::Book.unique.genre
 	)
 	end
 end
@@ -35,10 +35,10 @@ def seed_customers
 			zip: 									Faker::Address.zip_code,
 			state: 								Faker::Address.state_abbr,
 			country: 							Faker::Address.country,
-			email: 								"#{first_name}#{last_name}@example.com",
+			email: 								Faker::Internet.unique.safe_email,
 			password: 						"password",
 			password_confirmation: "password",
-			phone: 								Faker::PhoneNumber.cell_phone_in_e164,
+			phone: 								Faker::PhoneNumber.cell_phone,
 			age: 									Faker::Number.between(from: 1, to: 65)
 			)
 	end

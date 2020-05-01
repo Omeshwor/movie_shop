@@ -1,5 +1,5 @@
 class CustomersController < ApplicationController
-  before_action :set_customer, only: [:edit, :update, :show, :destroy] 
+  before_action :set_customer, only: [:edit, :update, :show, :destroy]
 
 	def index
 		@customers = Customer.paginate(page: params[:page], per_page: 25)
@@ -12,6 +12,7 @@ class CustomersController < ApplicationController
   def create
   	@customer = Customer.new(customer_params)
   	if @customer.save
+      session[:customer_id] = @customer.id
   		flash[:success] = "Welcome to the Movie Shop #{@customer.first_name}"
   		redirect_to customer_path(@customer)
   	else
