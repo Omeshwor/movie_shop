@@ -1,0 +1,31 @@
+<div class="container">
+	<h1 align="center" class="header">Listing all movies</h1>
+  <div align="center" >
+    <div class="page_info">
+      <%= page_entries_info @inventories %>
+    </div>
+    <div align="center">
+    	<%= will_paginate @inventories %>
+    </div>
+  </div>
+  <div class="row row-cols-1 row-cols-md-3">
+  <% @inventories.each do |inventory| %>
+		  <div class="col mb-4 border-info">
+		    <div class="card border-info">
+		      <div class="card-body">
+		        <h5 class="card-title"><%= link_to inventory.product.title, inventory.product %></h5>
+		        <hr>
+		        <p class="card-text">Quantity in stock : <%= inventory.quantity_in_stock %></p>
+		        <p class="card-text">Sales : <%= inventory.sales %></p>
+		        <%= link_to "Update inventory", edit_inventory_path(inventory), class: "btn btn-primary" %>
+		        <%= link_to "Delete inventory", inventory_path(inventory), method: :delete, class: "btn btn-danger",
+		        																data: { confirm: "Are you sure ?"} %>
+		      </div>
+		    </div>
+		  </div>
+		<% end %>
+	</div>
+	<div align="center">
+    <%= will_paginate @inventories %>
+	</div>
+</div>
