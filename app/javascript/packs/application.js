@@ -23,3 +23,8 @@ document.addEventListener("turbolinks:load", () => {
   $('[data-toggle="popover"]').popover()
 })
  
+$(document).ready(function(){
+    $('.alert').slideUp(5000, function(){
+        $(this).remove();
+    });
+});

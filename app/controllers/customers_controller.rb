@@ -1,5 +1,6 @@
 class CustomersController < ApplicationController
   before_action :set_customer, only: [:edit, :update, :show, :destroy]
+  before_action :correct_customer, only: [:edit, :update]
 
 	def index
 		@customers = Customer.paginate(page: params[:page], per_page: 25)
@@ -53,6 +54,9 @@ class CustomersController < ApplicationController
     @customer = Customer.find(params[:id])
   end
  
-
+  def correct_customer
+    @customer = Customer.find(params[:id])
+    redirect_to root_path unless current_customer == @customer
+  end
 
 end
