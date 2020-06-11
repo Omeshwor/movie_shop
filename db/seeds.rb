@@ -1,7 +1,12 @@
+Category.destroy_all
+Product.destroy_all
+Customer.destroy_all
+
+
 def seed_categories
 	10.times do 
 	Category.create!(
-		category_name: 					Faker::Book.unique.genre
+		category_name: 					Faker::Commerce.unique.department(max: 1)
 	)
 	end
 end
@@ -12,7 +17,7 @@ def seed_products
 	categories.each do |category|
 		5.times do
 			Product.create!(
-				title: 							Faker::Book.title,
+				title: 							Faker::Commerce.unique.product_name,
 				description: 				Faker::Lorem.sentences[0],
 				actor: 							Faker::Artist.name,
 				price: 							Faker::Commerce.price(range: 1.00..20.00),

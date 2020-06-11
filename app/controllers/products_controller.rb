@@ -12,7 +12,7 @@ class ProductsController < ApplicationController
   def create
     @product = Product.new(product_params)
     if @product.save
-      flash[:success] = "Movie successfully added!"
+      flash[:success] = "Product successfully added!"
       redirect_to product_path(@product)
     else
       render 'new'
@@ -29,7 +29,7 @@ class ProductsController < ApplicationController
 
   def update
     if @product.update(product_params)
-      flash[:success] = "Movie successfully updated!"
+      flash[:success] = "Product successfully updated!"
       redirect_to product_path(@product)
     else
       render 'edit'
