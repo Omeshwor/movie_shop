@@ -1,6 +1,7 @@
-Category.destroy_all
 Product.destroy_all
+Category.destroy_all
 Customer.destroy_all
+Inventory.destroy_all
 
 
 def seed_categories
@@ -49,6 +50,24 @@ def seed_customers
 	end
 end
 
+def seed_inventories
+	products = Product.all
+
+	products.each do |product|
+		1.times do
+			Inventory.create!(
+				quantity_in_stock: rand(0..100),
+				sales: rand(0..100),
+				product_id: product.id
+				)
+		end
+	end
+end
+
+
+
+
 seed_categories
 seed_products
 seed_customers
+seed_inventories

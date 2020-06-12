@@ -40,7 +40,8 @@ class CustomersController < ApplicationController
 
   def destroy
   	@customer.destroy
-  	flash[:danger] = "Customer successfully destroyed"
+    flash[:danger] = "Customer successfully destroyed"
+    session[:customer_id] = nil
   	redirect_to products_path
   end
 
