@@ -8,5 +8,8 @@ Rails.application.routes.draw do
   resources :categories
   resources :customers
   resources :inventories
+
+  get '/cart', to: 'orderlines#index'
+  resources :orderlines, path: '/cart/items'
 end
 
