@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_16_030312) do
+ActiveRecord::Schema.define(version: 2020_06_17_024734) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -50,22 +50,22 @@ ActiveRecord::Schema.define(version: 2020_06_16_030312) do
     t.index ["product_id"], name: "index_inventories_on_product_id"
   end
 
-  create_table "orderlines", force: :cascade do |t|
+  create_table "order_items", force: :cascade do |t|
     t.integer "quantity"
     t.bigint "product_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "order_id", null: false
     t.decimal "price", precision: 15, scale: 2, null: false
-    t.index ["order_id"], name: "index_orderlines_on_order_id"
-    t.index ["product_id"], name: "index_orderlines_on_product_id"
+    t.index ["order_id"], name: "index_order_items_on_order_id"
+    t.index ["product_id"], name: "index_order_items_on_product_id"
   end
 
   create_table "orders", force: :cascade do |t|
     t.decimal "net_amount"
     t.decimal "tax"
     t.decimal "total_amount"
-    t.bigint "customer_id", null: false
+    t.bigint "customer_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "token"
@@ -87,8 +87,8 @@ ActiveRecord::Schema.define(version: 2020_06_16_030312) do
   end
 
   add_foreign_key "inventories", "products"
-  add_foreign_key "orderlines", "orders"
-  add_foreign_key "orderlines", "products"
+  add_foreign_key "order_items", "orders"
+  add_foreign_key "order_items", "products"
   add_foreign_key "orders", "customers"
   add_foreign_key "products", "categories"
 end

@@ -34,8 +34,8 @@
 		        <% else %>
 		        	<p class="danger">No Special Pricing Available</p>
 		        <% end %>
-
-						<%= form_tag orderlines_path do %>
+						
+						<%= form_tag order_items_path do %>
 							<%= hidden_field_tag :product_id, product.id %>
 							<%= number_field_tag :quantity, 1, class: "form-control" %>
 							<%= submit_tag "Add to Cart", class: "btn btn-secondary" %>

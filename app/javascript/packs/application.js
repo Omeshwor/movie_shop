@@ -24,7 +24,7 @@ document.addEventListener("turbolinks:load", () => {
 })
  
 $(document).ready(function(){
-    $('.alert').slideUp(5000, function(){
+    $('.alert').slideUp(10000, function(){
         $(this).remove();
     });
 });

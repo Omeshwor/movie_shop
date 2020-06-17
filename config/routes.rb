@@ -9,7 +9,10 @@ Rails.application.routes.draw do
   resources :customers
   resources :inventories
 
-  get '/cart', to: 'orderlines#index'
-  resources :orderlines, path: '/cart/items'
+  get '/cart', to: 'order_items#index'
+  resources :order_items, path: '/cart/items'
+
+  get '/cart/checkout', to: 'orders#new', as: :checkout
+  patch '/cart/checkout', to: 'orders#create'
 end
 

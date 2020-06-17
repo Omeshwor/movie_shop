@@ -10,10 +10,10 @@
     </tr>
   </thead>
   <tbody>
-    <% @orderlines.each do |item| %>
+    <% @items.each do |item| %>
       <tr>
         <td><%= item.product.title %></td>
-        <td><%= number_to_currency item.product.special ? item.product.special : item.product.price %></td>
+        <td><%= number_to_currency item.price %></td>
         <td><%= item.quantity %>
         <td>
           <%= form_for item, method: :delete do |f| %>
@@ -23,4 +23,9 @@
       </tr>
     <% end %>
   </tbody>
+  <tfoot>
+    <td colspan="4" align="right">
+      <%= number_to_currency current_cart.net_amount %>
+    </td>
+  </tfoot>
 </table>
