@@ -46,6 +46,8 @@ class ShoppingCart
 
   def update_net_amount!
     order.net_amount = order.items.sum('quantity * price')
+    order.tax = 8.25
+    order.total_amount = (order.net_amount + (order.net_amount/tax))
     order.save
   end
 
